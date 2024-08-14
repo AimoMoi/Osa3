@@ -1,11 +1,11 @@
 const express = require('express')
 const morgan = require('morgan')
-const app = express()
 const cors = require('cors')
+const app = express() 
 
 app.use(cors())
-
 app.use(express.json())
+app.use(express.static('dist'))
 
 
 morgan.token('post-data', (req) => {
@@ -13,6 +13,8 @@ morgan.token('post-data', (req) => {
 })
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post-data'))
+
+
 
 let persons = [
     {
@@ -37,9 +39,6 @@ let persons = [
     }
 ]
 
-app.get('/', (request, response) => {
-    response.send('Hello');
-  })
 
 app.get('/api/persons', (request, response) => {
     response.json(persons)
@@ -98,6 +97,7 @@ app.post('/api/persons', (request, response) => {
 
     response.json(person)
 })
+
 
 
 const PORT = process.env.PORT || 3001

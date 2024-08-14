@@ -1,0 +1,7 @@
+POST https://puhelinluettelo3.onrender.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "Matti Meikä",
+    "number": "123"
+}
