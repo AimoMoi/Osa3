@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const Person = require('./models/person')
 const app = express()
+require('dotenv').config()
 
 app.use(cors())
 app.use(express.static('dist'))
